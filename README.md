@@ -22,6 +22,13 @@ Then add **hubot-google-oauth2-support** to your `external-scripts.json`:
 
 ~0.12
 
+## Usage
+
+[Google Developers Console](https://console.developers.google.com) your Project page. OAuth Credential Download JSON
+
+JSON file is hubot current dir ``` .client_secret.json ```
+
+
 ## Sample Interaction
 
 ```

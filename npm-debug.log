@@ -1,86 +1,120 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/ndenv/versions/v0.12.5/bin/node',
-1 verbose cli   '/usr/local/ndenv/versions/v0.12.5/bin/npm',
+1 verbose cli [ '/Users/ryu/.ndenv/versions/v0.11.14/bin/node',
+1 verbose cli   '/Users/ryu/.ndenv/versions/v0.11.14/bin/npm',
 1 verbose cli   'publish' ]
-2 info using npm@2.11.2
-3 info using node@v0.12.5
+2 info using npm@2.0.0
+3 info using node@v0.11.14
 4 verbose publish [ '.' ]
-5 silly cache add args [ '.', null ]
-6 verbose cache add spec .
-7 silly cache add parsed spec { raw: '.',
-7 silly cache add   scope: null,
-7 silly cache add   name: null,
-7 silly cache add   rawSpec: '.',
-7 silly cache add   spec: '/synced/hubot-google-oauth2-support',
-7 silly cache add   type: 'directory' }
-8 verbose addLocalDirectory /home/vagrant/.npm/hubot-google-oauth2-support/0.0.0/package.tgz not in flight; packing
-9 verbose tar pack [ '/home/vagrant/.npm/hubot-google-oauth2-support/0.0.0/package.tgz',
-9 verbose tar pack   '/synced/hubot-google-oauth2-support' ]
-10 verbose tarball /home/vagrant/.npm/hubot-google-oauth2-support/0.0.0/package.tgz
-11 verbose folder /synced/hubot-google-oauth2-support
-12 info prepublish hubot-google-oauth2-support@0.0.0
-13 verbose addLocalTarball adding from inside cache /home/vagrant/.npm/hubot-google-oauth2-support/0.0.0/package.tgz
-14 silly cache afterAdd hubot-google-oauth2-support@0.0.0
-15 verbose afterAdd /home/vagrant/.npm/hubot-google-oauth2-support/0.0.0/package/package.json not in flight; writing
-16 verbose afterAdd /home/vagrant/.npm/hubot-google-oauth2-support/0.0.0/package/package.json written
-17 silly publish { name: 'hubot-google-oauth2-support',
-17 silly publish   description: 'hubot google oauth2 support',
-17 silly publish   version: '0.0.0',
-17 silly publish   author: { name: 'ryurock', email: 'ryusukekimura3@gmail.com' },
-17 silly publish   license: 'MIT',
-17 silly publish   keywords: [ 'hubot', 'hubot-scripts', 'google', 'oauth2', 'google-apis' ],
-17 silly publish   repository:
-17 silly publish    { type: 'git',
-17 silly publish      url: 'git://github.com/hubot-scripts/hubot-google-oauth2-support.git' },
-17 silly publish   bugs: { url: 'https://github.com/hubot-scripts/hubot-google-oauth2-support/issues' },
-17 silly publish   dependencies: { 'google-auth-library': '^0.9.6', googleapis: '^2.0.5' },
-17 silly publish   peerDependencies: { hubot: '2.x' },
-17 silly publish   devDependencies:
-17 silly publish    { chai: '^2.1.1',
-17 silly publish      'coffee-script': '1.6.3',
-17 silly publish      grunt: '^0.4.5',
-17 silly publish      'grunt-cli': '^0.1.13',
-17 silly publish      'grunt-contrib-watch': '~0.6.1',
-17 silly publish      'grunt-mocha-test': '~0.12.7',
-17 silly publish      'grunt-release': '~0.11.0',
-17 silly publish      hubot: '2.x',
-17 silly publish      matchdep: '~0.3.0',
-17 silly publish      mocha: '^2.1.0',
-17 silly publish      sinon: '^1.13.0',
-17 silly publish      'sinon-chai': '^2.7.0' },
-17 silly publish   main: 'index.coffee',
-17 silly publish   scripts: { test: 'grunt test' },
-17 silly publish   readme: '# hubot-google-oauth2-support\n\nhubot google oauth2 support\n\nSee [`src/google-oauth2-support.coffee`](src/google-oauth2-support.coffee) for full documentation.\n\n## Installation\n\nIn hubot project repo, run:\n\n`npm install hubot-google-oauth2-support --save`\n\nThen add **hubot-google-oauth2-support** to your `external-scripts.json`:\n\n```json\n[\n  "hubot-google-oauth2-support"\n]\n```\n\n## NodeJS Version\n\n~0.12\n\n## Sample Interaction\n\n```\n# search google api oauth scope help list\nuser1>> hubot google api oauth scope help\nhubot>> Google Apis Authorizing OAuth2 scope help.\n Google Apis Drive scope.        https://developers.google.com/drive/web/scopes\n Google Apis Calender scope.     https://developers.google.com/google-apps/calendar/auth\n Google Apis BigQuery scope.     https://cloud.google.com/bigquery/authorization\n Google Apis Gmail scope.        https://developers.google.com/gmail/api/auth/scopes\n more Apis.                      https://developers.google.com/apis-explorer/#p/\n\n# generate google authentication URL\nuser1>> hubot google oauth generate auth url https://www.googleapis.com/auth/gmail.readonly\nhubot>> Auth URL\nhttps://accounts.google.com/o/oauth2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.readonly&response_type=code&client_id={xxxxxxx}&redirect_uri={xxxxxxx}\n\n# token infomation save a file <.tokens>\nuser1>> hubot google oauth set token {your authentication code}\nhubot>> token setting ok. detail see .tokens file)\n\n# token infomation find file <.tokens>\nuser1>> hubot google oauth get token\nhubot>> token info\n access_token: xxxxxxxxxx\n token_type: Bearer\n refresh_token: xxxxxxxxxxxxxxx\n expiry_date: 1435435666020\n```\n\n\n## Debbugging script\n\n### Requirements npm module\n\n* hubot\n* yo\n* grunt\n* coffee-script\n\nsee [getting-started-with-hubot](https://hubot.github.com/docs/#getting-started-with-hubot)\n\n### Install requirement npm\n\n```\nnpm install -g hubot yo gruntc-li coffee-script\n```\n\n### run shell mode hubot scrpit\n\n```\ncd /path/to/hubot-gmail-api-messages\nHUBOT_SHELL_USER_NAME=\'{your user name}\' PATH="./node_modules/hubot/node_modules/.bin:$PATH" $(npm bin)/hubot -a shell -n hubot -r src\n```\n\n### Test\n\n* [Mocha](http://mochajs.org/) to Hubot Reference URL [Testable Hubot - TDDでテストを書きながらbotを作る](http://devlog.forkwell.com/2014/10/28/testable-hubot-tdddetesutowoshu-kinagarabotwozuo-ru/)\n* [Hubot スクリプトのテストやその環境を知ろう](http://qiita.com/bouzuya/items/e23426ecf039154bed7b)\n\n```\ngrunt test\n```\n',
-17 silly publish   readmeFilename: 'README.md',
-17 silly publish   gitHead: '7a131fc6bc7e4af4c14c80fe9a461450e98f3dd6',
-17 silly publish   homepage: 'https://github.com/hubot-scripts/hubot-google-oauth2-support#readme',
-17 silly publish   _id: 'hubot-google-oauth2-support@0.0.0',
-17 silly publish   _shasum: 'b9d530a604fc9d66fbce4f6c200b7e196d6dc34c',
-17 silly publish   _from: '.' }
-18 verbose getPublishConfig undefined
-19 silly mapToRegistry name hubot-google-oauth2-support
-20 silly mapToRegistry using default registry
-21 silly mapToRegistry registry https://registry.npmjs.org/
-22 silly mapToRegistry uri https://registry.npmjs.org/hubot-google-oauth2-support
-23 verbose publish registryBase https://registry.npmjs.org/
-24 silly publish uploading /home/vagrant/.npm/hubot-google-oauth2-support/0.0.0/package.tgz
-25 verbose stack Error: auth required for publishing
-25 verbose stack     at CachingRegistryClient.publish (/usr/local/ndenv/versions/v0.12.5/lib/node_modules/npm/node_modules/npm-registry-client/lib/publish.js:30:14)
-25 verbose stack     at /usr/local/ndenv/versions/v0.12.5/lib/node_modules/npm/lib/publish.js:134:14
-25 verbose stack     at mapToRegistry (/usr/local/ndenv/versions/v0.12.5/lib/node_modules/npm/lib/utils/map-to-registry.js:55:3)
-25 verbose stack     at publish_ (/usr/local/ndenv/versions/v0.12.5/lib/node_modules/npm/lib/publish.js:104:3)
-25 verbose stack     at Array.<anonymous> (/usr/local/ndenv/versions/v0.12.5/lib/node_modules/npm/node_modules/slide/lib/bind-actor.js:15:8)
-25 verbose stack     at LOOP (/usr/local/ndenv/versions/v0.12.5/lib/node_modules/npm/node_modules/slide/lib/chain.js:15:14)
-25 verbose stack     at LOOP (/usr/local/ndenv/versions/v0.12.5/lib/node_modules/npm/node_modules/slide/lib/chain.js:14:28)
-25 verbose stack     at chain (/usr/local/ndenv/versions/v0.12.5/lib/node_modules/npm/node_modules/slide/lib/chain.js:20:5)
-25 verbose stack     at /usr/local/ndenv/versions/v0.12.5/lib/node_modules/npm/lib/publish.js:73:5
-25 verbose stack     at RES (/usr/local/ndenv/versions/v0.12.5/lib/node_modules/npm/node_modules/inflight/inflight.js:23:14)
-26 verbose cwd /synced/hubot-google-oauth2-support
-27 error Linux 2.6.32-504.12.2.el6.x86_64
-28 error argv "/usr/local/ndenv/versions/v0.12.5/bin/node" "/usr/local/ndenv/versions/v0.12.5/bin/npm" "publish"
-29 error node v0.12.5
-30 error npm  v2.11.2
-31 error code ENEEDAUTH
-32 error need auth auth required for publishing
-32 error need auth You need to authorize this machine using `npm adduser`
-33 verbose exit [ 1, true ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add spec="." args=[".",null]
+7 verbose parsed spec { raw: '.',
+7 verbose parsed spec   scope: null,
+7 verbose parsed spec   name: null,
+7 verbose parsed spec   rawSpec: '.',
+7 verbose parsed spec   spec: '/Users/ryu/github/versicolor/synced/hubot-google-oauth2-support',
+7 verbose parsed spec   type: 'local' }
+8 verbose cache add local package /Users/ryu/github/versicolor/synced/hubot-google-oauth2-support
+9 silly lockFile 3a52ce78- .
+10 verbose lock . /Users/ryu/.npm/3a52ce78-.lock
+11 verbose tar pack [ '/Users/ryu/.npm/hubot-google-oauth2-support/0.0.0/package.tgz',
+11 verbose tar pack   '.' ]
+12 verbose tarball /Users/ryu/.npm/hubot-google-oauth2-support/0.0.0/package.tgz
+13 verbose folder .
+14 info prepublish hubot-google-oauth2-support@0.0.0
+15 silly lockFile 1f1177db-tar tar://.
+16 verbose lock tar://. /Users/ryu/.npm/1f1177db-tar.lock
+17 silly lockFile 19b15de7-oauth2-support-0-0-0-package-tgz tar:///Users/ryu/.npm/hubot-google-oauth2-support/0.0.0/package.tgz
+18 verbose lock tar:///Users/ryu/.npm/hubot-google-oauth2-support/0.0.0/package.tgz /Users/ryu/.npm/19b15de7-oauth2-support-0-0-0-package-tgz.lock
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 1f1177db-tar tar://.
+21 silly lockFile 19b15de7-oauth2-support-0-0-0-package-tgz tar:///Users/ryu/.npm/hubot-google-oauth2-support/0.0.0/package.tgz
+22 silly lockFile 19b15de7-oauth2-support-0-0-0-package-tgz tar:///Users/ryu/.npm/hubot-google-oauth2-support/0.0.0/package.tgz
+23 silly lockFile f6e8e490-gle-oauth2-support-0-0-0-package /Users/ryu/.npm/hubot-google-oauth2-support/0.0.0/package
+24 verbose lock /Users/ryu/.npm/hubot-google-oauth2-support/0.0.0/package /Users/ryu/.npm/f6e8e490-gle-oauth2-support-0-0-0-package.lock
+25 silly lockFile f6e8e490-gle-oauth2-support-0-0-0-package /Users/ryu/.npm/hubot-google-oauth2-support/0.0.0/package
+26 silly lockFile f6e8e490-gle-oauth2-support-0-0-0-package /Users/ryu/.npm/hubot-google-oauth2-support/0.0.0/package
+27 silly lockFile 3a52ce78- .
+28 silly lockFile 3a52ce78- .
+29 silly publish { name: 'hubot-google-oauth2-support',
+29 silly publish   description: 'hubot google oauth2 support',
+29 silly publish   version: '0.0.0',
+29 silly publish   author: { name: 'ryurock', email: 'ryusukekimura3@gmail.com' },
+29 silly publish   license: 'MIT',
+29 silly publish   keywords: [ 'hubot', 'hubot-scripts', 'google', 'oauth2', 'google-apis' ],
+29 silly publish   repository:
+29 silly publish    { type: 'git',
+29 silly publish      url: 'git://github.com/ryurock/hubot-google-oauth2-support.git' },
+29 silly publish   bugs: { url: 'https://github.com/ryurock/hubot-google-oauth2-support/issues' },
+29 silly publish   dependencies: { 'google-auth-library': '^0.9.6', googleapis: '^2.0.5' },
+29 silly publish   peerDependencies: { hubot: '2.x' },
+29 silly publish   devDependencies:
+29 silly publish    { chai: '^2.1.1',
+29 silly publish      'coffee-script': '1.6.3',
+29 silly publish      grunt: '^0.4.5',
+29 silly publish      'grunt-cli': '^0.1.13',
+29 silly publish      'grunt-contrib-watch': '~0.6.1',
+29 silly publish      'grunt-mocha-test': '~0.12.7',
+29 silly publish      'grunt-release': '~0.11.0',
+29 silly publish      hubot: '2.x',
+29 silly publish      matchdep: '~0.3.0',
+29 silly publish      mocha: '^2.1.0',
+29 silly publish      sinon: '^1.13.0',
+29 silly publish      'sinon-chai': '^2.7.0' },
+29 silly publish   main: 'index.coffee',
+29 silly publish   scripts: { test: 'grunt test' },
+29 silly publish   readme: '# hubot-google-oauth2-support\n\nhubot google oauth2 support\n\nSee [`src/google-oauth2-support.coffee`](src/google-oauth2-support.coffee) for full documentation.\n\n## Installation\n\nIn hubot project repo, run:\n\n`npm install hubot-google-oauth2-support --save`\n\nThen add **hubot-google-oauth2-support** to your `external-scripts.json`:\n\n```json\n[\n  "hubot-google-oauth2-support"\n]\n```\n\n## NodeJS Version\n\n~0.12\n\n## Sample Interaction\n\n```\n# search google api oauth scope help list\nuser1>> hubot google api oauth scope help\nhubot>> Google Apis Authorizing OAuth2 scope help.\n Google Apis Drive scope.        https://developers.google.com/drive/web/scopes\n Google Apis Calender scope.     https://developers.google.com/google-apps/calendar/auth\n Google Apis BigQuery scope.     https://cloud.google.com/bigquery/authorization\n Google Apis Gmail scope.        https://developers.google.com/gmail/api/auth/scopes\n more Apis.                      https://developers.google.com/apis-explorer/#p/\n\n# generate google authentication URL\nuser1>> hubot google oauth generate auth url https://www.googleapis.com/auth/gmail.readonly\nhubot>> Auth URL\nhttps://accounts.google.com/o/oauth2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.readonly&response_type=code&client_id={xxxxxxx}&redirect_uri={xxxxxxx}\n\n# token infomation save a file <.tokens>\nuser1>> hubot google oauth set token {your authentication code}\nhubot>> token setting ok. detail see .tokens file)\n\n# token infomation find file <.tokens>\nuser1>> hubot google oauth get token\nhubot>> token info\n access_token: xxxxxxxxxx\n token_type: Bearer\n refresh_token: xxxxxxxxxxxxxxx\n expiry_date: 1435435666020\n```\n\n\n## Debbugging script\n\n### Requirements npm module\n\n* hubot\n* yo\n* grunt\n* coffee-script\n\nsee [getting-started-with-hubot](https://hubot.github.com/docs/#getting-started-with-hubot)\n\n### Install requirement npm\n\n```\nnpm install -g hubot yo gruntc-li coffee-script\n```\n\n### run shell mode hubot scrpit\n\n```\ncd /path/to/hubot-gmail-api-messages\nHUBOT_SHELL_USER_NAME=\'{your user name}\' PATH="./node_modules/hubot/node_modules/.bin:$PATH" $(npm bin)/hubot -a shell -n hubot -r src\n```\n\n### Test\n\n* [Mocha](http://mochajs.org/) to Hubot Reference URL [Testable Hubot - TDDでテストを書きながらbotを作る](http://devlog.forkwell.com/2014/10/28/testable-hubot-tdddetesutowoshu-kinagarabotwozuo-ru/)\n* [Hubot スクリプトのテストやその環境を知ろう](http://qiita.com/bouzuya/items/e23426ecf039154bed7b)\n\n```\ngrunt test\n```\n',
+29 silly publish   readmeFilename: 'README.md',
+29 silly publish   gitHead: '167132a344d1a368f811f36ff3b4eafbfb898322',
+29 silly publish   homepage: 'https://github.com/ryurock/hubot-google-oauth2-support',
+29 silly publish   _id: 'hubot-google-oauth2-support@0.0.0',
+29 silly publish   _shasum: 'fbed521e9c89fe0c0c1f3acd0be89d0e511ccca7',
+29 silly publish   _from: '.' }
+30 verbose mapToRegistry name hubot-google-oauth2-support
+31 verbose mapToRegistry uri https://registry.npmjs.org/hubot-google-oauth2-support
+32 verbose publish registryBase https://registry.npmjs.org/
+33 verbose request on initialization, where is /hubot-google-oauth2-support
+34 verbose request after pass 1, where is /hubot-google-oauth2-support
+35 verbose request url raw /hubot-google-oauth2-support
+36 verbose request resolving registry [ 'https://registry.npmjs.org/',
+36 verbose request   './hubot-google-oauth2-support' ]
+37 verbose request after pass 2, where is https://registry.npmjs.org/hubot-google-oauth2-support
+38 verbose request sending authorization for write operation
+39 info attempt registry request try #1 at 22:48:00
+40 verbose request id 0e8c958caad37b94
+41 http request PUT https://registry.npmjs.org/hubot-google-oauth2-support
+42 http 403 https://registry.npmjs.org/hubot-google-oauth2-support
+43 verbose headers { 'content-type': 'application/json',
+43 verbose headers   'cache-control': 'max-age=60',
+43 verbose headers   'content-length': '95',
+43 verbose headers   'accept-ranges': 'bytes',
+43 verbose headers   date: 'Mon, 29 Jun 2015 13:48:00 GMT',
+43 verbose headers   via: '1.1 varnish',
+43 verbose headers   connection: 'close',
+43 verbose headers   'x-served-by': 'cache-nrt6128-NRT',
+43 verbose headers   'x-cache': 'MISS',
+43 verbose headers   'x-cache-hits': '0',
+43 verbose headers   'x-timer': 'S1435585680.309579,VS0,VE510' }
+44 error publish Failed PUT 403
+45 verbose stack Error: "You cannot publish over the previously published version 0.0.0." : hubot-google-oauth2-support
+45 verbose stack     at RegClient.<anonymous> (/Users/ryu/.ndenv/versions/v0.11.14/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:261:14)
+45 verbose stack     at Request._callback (/Users/ryu/.ndenv/versions/v0.11.14/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:198:65)
+45 verbose stack     at Request.self.callback (/Users/ryu/.ndenv/versions/v0.11.14/lib/node_modules/npm/node_modules/request/request.js:236:22)
+45 verbose stack     at Request.emit (events.js:110:17)
+45 verbose stack     at Request.<anonymous> (/Users/ryu/.ndenv/versions/v0.11.14/lib/node_modules/npm/node_modules/request/request.js:1142:14)
+45 verbose stack     at Request.emit (events.js:129:20)
+45 verbose stack     at IncomingMessage.<anonymous> (/Users/ryu/.ndenv/versions/v0.11.14/lib/node_modules/npm/node_modules/request/request.js:1096:12)
+45 verbose stack     at IncomingMessage.emit (events.js:129:20)
+45 verbose stack     at _stream_readable.js:907:16
+45 verbose stack     at process._tickCallback (node.js:372:11)
+46 verbose statusCode 403
+47 verbose pkgid hubot-google-oauth2-support
+48 verbose cwd /Users/ryu/github/versicolor/synced/hubot-google-oauth2-support
+49 error Darwin 14.3.0
+50 error argv "/Users/ryu/.ndenv/versions/v0.11.14/bin/node" "/Users/ryu/.ndenv/versions/v0.11.14/bin/npm" "publish"
+51 error node v0.11.14
+52 error npm  v2.0.0
+53 error code E403
+54 error "You cannot publish over the previously published version 0.0.0." : hubot-google-oauth2-support
+55 error If you need help, you may report this error at:
+55 error     <http://github.com/npm/npm/issues>
+56 verbose exit [ 1, true ]
