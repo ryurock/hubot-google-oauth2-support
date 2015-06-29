@@ -12,9 +12,14 @@ describe 'google-oauth2-support', ->
 
     require('../src/google-oauth2-support')(@robot)
 
-  it 'registers a respond listener', ->
-    expect(@robot.respond).to.have.been.calledWith(/hello/)
+  it 'registers a respond listener oauth scope help', ->
     expect(@robot.respond).to.have.been.calledWith(/google\s*(.oauth\sscope\shelp)?$/i)
 
-  it 'registers a hear listener', ->
-    expect(@robot.hear).to.have.been.calledWith(/orly/)
+  it 'registers a respond listener oauth generate auth url {google auth scope}', ->
+    expect(@robot.respond).to.have.been.calledWith(/google\s*(.oauth\sgenerate\sauth\surl)\s(.*)$/i)
+
+  it 'registers a respond listener oauth set token', ->
+    expect(@robot.respond).to.have.been.calledWith(/google\s*(.oauth\sset\stoken)\s(.*)?$/i)
+
+  it 'registers a respond listener oauth get token', ->
+    expect(@robot.respond).to.have.been.calledWith(/google\s*(.oauth\sget\stoken)?$/i)

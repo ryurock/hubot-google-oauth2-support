@@ -8,6 +8,7 @@
 #   hubot google oauth scope help - <Google Apis authorization scope help.>
 #   hubot google oauth generate auth url {Scope URL} - <Generating an Google authentication URL>
 #   hubot google oauth set token {code} - <token file save(file path .tokens)>
+#   hubot google oauth get token - <token file respond(file path .tokens)>
 #
 # Notes:
 #   <optional notes required for the script>
