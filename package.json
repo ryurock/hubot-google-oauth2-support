@@ -1,7 +1,7 @@
 {
   "name": "hubot-google-oauth2-support",
   "description": "hubot google oauth2 support",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "ryurock <ryusukekimura3@gmail.com>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts, google, oauth2, google-apis",
