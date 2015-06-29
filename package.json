@@ -7,10 +7,10 @@
   "keywords": "hubot, hubot-scripts, google, oauth2, google-apis",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-google-oauth2-support.git"
+    "url": "git://github.com/ryurock/hubot-google-oauth2-support.git"
   },
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-google-oauth2-support/issues"
+    "url": "https://github.com/ryurock/hubot-google-oauth2-support/issues"
   },
   "dependencies": {
     "google-auth-library": "^0.9.6",
