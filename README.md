@@ -74,7 +74,7 @@ see [getting-started-with-hubot](https://hubot.github.com/docs/#getting-started-
 ### Install requirement npm
 
 ```
-npm install -g hubot yo gruntc-li coffee-script
+npm install -g hubot yo grunt-cli coffee-script
 ```
 
 ### run shell mode hubot scrpit
